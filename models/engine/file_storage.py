@@ -25,6 +25,12 @@ class FileStorage:
                 temp[key] = val.to_dict()
             json.dump(temp, f)
 
+    def delete(self, obj=None):
+        """
+           delete object from __object if it is included, move out if not
+        """
+        if (obj):
+             self.__objects.pop("{}.{}".format(type(obj).__name__, obj.id))
     def reload(self):
         """Loads storage dictionary from file"""
         from models.base_model import BaseModel
@@ -51,8 +57,4 @@ class FileStorage:
 
         def close(self):
             """display our HBNB data"""
-        self.reload()
-        def delete(self, obj=None):
-            """delete obj from __objects if it’s inside - if obj is None,the method should not do anything"""
-            if (obj):
-                self.__objects.pop("{}.{}".format(type(obj).__name__, obj.id))
+            self.reload()
