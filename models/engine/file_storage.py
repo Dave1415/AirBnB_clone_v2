@@ -29,8 +29,10 @@ class FileStorage:
         """
            delete object from __object if it is included, move out if not
         """
-        if (obj):
-             self.__objects.pop("{}.{}".format(type(obj).__name__, obj.id))
+        try:
+            del self.__objects["{}.{}".format(type(obj).__name__, obj.id)]
+        except (AttributeError, KeyError):
+            pass
     def reload(self):
         """Loads storage dictionary from file"""
         from models.base_model import BaseModel
