@@ -2,8 +2,9 @@
 """test for console to make it start working"""
 import unittest
 from io import StringIO
-from console import HBNBCommand
 import sys
+import os
+from console import HBNBCommand
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
