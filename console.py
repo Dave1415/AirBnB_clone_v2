@@ -3,7 +3,6 @@
     Main Console program
 """
 import cmd
-import models
 import re
 
 
